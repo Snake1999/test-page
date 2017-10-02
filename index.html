@@ -19,15 +19,15 @@
 	<script>
 var data = [{
     value: 233,
-    color: "#D4BFDA",
+    color: "#0D6664",
     label: "在线人数"
 }, {
     value: 233,
-    color: "#6E353D",
+    color: "#063748",
     label: "等待断线重连的人数"
 }, {
     value: 233,
-    color: '#78745F',
+    color: '#031634',
     label: "空闲人数"
 }];
 
@@ -42,7 +42,7 @@ function doUpdate() {
         $('#pnum').html(api.saved + '/' + api.max);
 		myPieChart.segments[0].value = api.online;
 		myPieChart.segments[1].value = api.saved - api.online;
-		myPieChart.segments[2].value = api.max - api.saved;
+		myPieChart.segments[2].value = 1000 - api.saved;
 		myPieChart.update();
     });
 }
