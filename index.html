@@ -4,38 +4,32 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello world!</title>
-	<!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <title>EaseCation 在线人数查询</title>
 	<link rel="stylesheet" href="http://cdn.bootcss.com/zui/1.7.0/css/zui.min.css">
   </head>
   <body> 
   
-	<canvas id="myLineChart" width="400" height="400"></canvas>
-	
-	<script type="javascript">
-	
-		var data = {
-    labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+<canvas id="myLineChart" width="639" height="230" style="width: 639px; height: 230px;"></canvas>	
+
+	<script src="http://cdn.bootcss.com/zui/1.7.0/lib/jquery/jquery.js"></script>
+	<script src="http://cdn.bootcss.com/zui/1.7.0/js/zui.min.js"></script>
+	<script src="http://cdn.bootcss.com/zui/1.7.0/lib/chart/zui.chart.min.js"></script>
+	<script>
+var data = {
+    labels: ["19:35", "19:36", "19:37", "19:38", "19:39", "19:40", "19:41", "19:42", "19:43", "19:44", "19:45", "19:46"],
     datasets: [{
-        label: "红队",
+        label: "最大人数",
         color: "red",
-        data: [65, 59, 80, 81, 56, 55, 40, 44, 55, 70, 30, 40]
+        data: [2422, 2356, 2401, 2256, 2262, 2277, 2256, 2402, 2331, 2344, 2301, 2290]
     }, {
-        label: "绿队",
+        label: "在线人数",
         color: "green",
-        data: [28, 48, 40, 19, 86, 27, 90, 60, 30, 44, 50, 66]
+        data: [428, 448, 440, 419, 486, 427, 490, 460, 430, 444, 450, 466]
     }]
 };
-
-var options = {}; // 图表配置项，可以留空来使用默认的配置
-
+var options = {}; 
 var myLineChart = $("#myLineChart").lineChart(data, options);
 	</script>
 	
-	<!-- ZUI Javascript 依赖 jQuery -->
-	<script src="http://cdn.bootcss.com/zui/1.7.0/lib/jquery/jquery.js"></script>
-	<!-- ZUI 标准版压缩后的 JavaScript 文件 -->
-	<script src="http://cdn.bootcss.com/zui/1.7.0/js/zui.min.js"></script>
-	<script src="http://cdn.bootcss.com/zui/1.7.0/lib/chart/zui.chart.min.js"></script>
   </body>
 </html>
