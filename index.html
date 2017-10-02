@@ -7,16 +7,35 @@
     <title>Hello world!</title>
 	<!-- ZUI 标准版压缩后的 CSS 文件 -->
 	<link rel="stylesheet" href="http://cdn.bootcss.com/zui/1.7.0/css/zui.min.css">
-
   </head>
-  <body>
-    <h1>Hello, world!</h1>
+  <body> 
+  
+	<canvas id="myLineChart" width="400" height="400"></canvas>
+	
+	<script type="javascript">
+	
+		var data = {
+    labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+    datasets: [{
+        label: "红队",
+        color: "red",
+        data: [65, 59, 80, 81, 56, 55, 40, 44, 55, 70, 30, 40]
+    }, {
+        label: "绿队",
+        color: "green",
+        data: [28, 48, 40, 19, 86, 27, 90, 60, 30, 44, 50, 66]
+    }]
+};
 
-    <!-- 在此处编码你的创意 -->
+var options = {}; // 图表配置项，可以留空来使用默认的配置
 
+var myLineChart = $("#myLineChart").lineChart(data, options);
+	</script>
+	
 	<!-- ZUI Javascript 依赖 jQuery -->
 	<script src="http://cdn.bootcss.com/zui/1.7.0/lib/jquery/jquery.js"></script>
 	<!-- ZUI 标准版压缩后的 JavaScript 文件 -->
 	<script src="http://cdn.bootcss.com/zui/1.7.0/js/zui.min.js"></script>
+	<script src="http://cdn.bootcss.com/zui/1.7.0/lib/chart/zui.chart.min.js"></script>
   </body>
 </html>
