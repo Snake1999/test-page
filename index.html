@@ -10,11 +10,23 @@
   <body> 
   
 <canvas id="myLineChart" width="639" height="230" style="width: 639px; height: 230px;"></canvas>	
+    	<div id="pnum">Loading...</div>
 
 	<script src="http://cdn.bootcss.com/zui/1.7.0/lib/jquery/jquery.js"></script>
 	<script src="http://cdn.bootcss.com/zui/1.7.0/js/zui.min.js"></script>
 	<script src="http://cdn.bootcss.com/zui/1.7.0/lib/chart/zui.chart.min.js"></script>
 	<script>
+function doUpdate() {
+    $.getJSON("http://www.easecation.net/proxy.php?proxy=players",function(api) {
+        $('#pnum').html(api.saved + '/' + api.max);
+    });
+}
+
+$(document).ready(function() {
+    doUpdate();
+    setInterval(doUpdate,5000); // every 5 seconds
+});
+	
 var data = {
     labels: ["19:35", "19:36", "19:37", "19:38", "19:39", "19:40", "19:41", "19:42", "19:43", "19:44", "19:45", "19:46"],
     datasets: [{
