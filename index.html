@@ -9,38 +9,48 @@
   </head>
   <body> 
   
-<canvas id="myLineChart" width="639" height="230" style="width: 639px; height: 230px;"></canvas>	
+<canvas id="myPieChart" width="400" height="400"></canvas>
+
     	<div id="pnum">Loading...</div>
 
 	<script src="http://cdn.bootcss.com/zui/1.7.0/lib/jquery/jquery.js"></script>
 	<script src="http://cdn.bootcss.com/zui/1.7.0/js/zui.min.js"></script>
 	<script src="http://cdn.bootcss.com/zui/1.7.0/lib/chart/zui.chart.min.js"></script>
 	<script>
+var data = [{
+    value: 233,
+    color: "lime",
+    label: "在线人数"
+}, {
+    value: 233,
+    color: "yellow",
+    label: "等待断线重连的人数"
+}, {
+    value: 233,
+    color: 'gray',
+    label: "空闲人数"
+}];
+
+// 图表配置项，可以留空来使用默认的配置
+var options = {
+    scaleShowLabels: true, // 展示标签
+};
+
+var myPieChart = $("#myPieChart").pieChart(data, options);
 function doUpdate() {
     $.getJSON("http://www.easecation.net/proxy.php?proxy=players",function(api) {
         $('#pnum').html(api.saved + '/' + api.max);
+		myPieChart.segments[0].value = api.online;
+		myPieChart.segments[1].value = api.saved - api.online;
+		myPieChart.segments[2].value = api.max - api.saved;
+		myPieChart.update();
     });
 }
-
 $(document).ready(function() {
     doUpdate();
     setInterval(doUpdate,5000); // every 5 seconds
 });
 	
-var data = {
-    labels: ["19:35", "19:36", "19:37", "19:38", "19:39", "19:40", "19:41", "19:42", "19:43", "19:44", "19:45", "19:46"],
-    datasets: [{
-        label: "最大人数",
-        color: "red",
-        data: [2422, 2356, 2401, 2256, 2262, 2277, 2256, 2402, 2331, 2344, 2301, 2290]
-    }, {
-        label: "在线人数",
-        color: "green",
-        data: [428, 448, 440, 419, 486, 427, 490, 460, 430, 444, 450, 466]
-    }]
-};
-var options = {}; 
-var myLineChart = $("#myLineChart").lineChart(data, options);
 	</script>
 	
   </body>
